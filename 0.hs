@@ -1,4 +1,8 @@
-Function(let, function,if..):
+
+Function,Lists,Tuples
+------------------------------
+
+1. function(let, function,if..):
 
 
 write a function call hypotenuse.hs
@@ -39,7 +43,7 @@ Ok, modules loaded: Main.
 error
 
 -------------------------------------------------------------------------------
-Lists:
+2. Lists:
 
 Prelude> let num=[1,2,3,4,29,136]
 Prelude> head num
@@ -140,6 +144,57 @@ Prelude> [[ x | x <- word, not(x `elem` "bo")] | word <- ["bell","book","candle"
 Prelude> [[x*y | y <- [1..5]] | x <- [1..5]]
 [[1,2,3,4,5],[2,4,6,8,10],[3,6,9,12,15],[4,8,12,16,20],[5,10,15,20,25]]
 --each elem in y * each elem in x
+
+---------------------------------------------------------------------------------
+
+3. Tuples:
+--tuples like a struct in C and a object in java
+
+
+--We can see two diffrient lists equle or not, but can not see in tuples
+
+Prelude> [1,2] == [1,2,3]
+False
+Prelude> (1,2) == (1,2,3)
+
+<interactive>:8:10: error:
+    • Couldn't match expected type ‘(Integer, Integer)’
+                  with actual type ‘(Integer, Integer, Integer)’
+    • In the second argument of ‘(==)’, namely ‘(1, 2, 3)’
+      In the expression: (1, 2) == (1, 2, 3)
+      In an equation for ‘it’: it = (1, 2) == (1, 2, 3)
+      
+--elem in lists must be have a same type, but tuples can have diffrient type elem
+
+Prelude> [1,"yu"]
+
+<interactive>:9:2: error:
+    • No instance for (Num [Char]) arising from the literal ‘1’
+    • In the expression: 1
+      In the expression: [1, "yu"]
+      In an equation for ‘it’: it = [1, "yu"]
+Prelude> (1,"yu")
+(1,"yu")
+
+
+Prelude> fst("sd","ff")
+"sd"
+
+Prelude> snd("fw","er")
+"er"
+
+--zip turns two lists into a list of pairs
+
+Prelude> zip["chen","li","huang"]["shu","ming","xue"]
+[("chen","shu"),("li","ming"),("huang","xue")]
+
+
+Prelude> let num = [1..4]
+Prelude> let words = ["one",two","three","four"]
+Prelude> let pairs = zip num words
+Prelude> pairs
+[(1,"one"),(2,"two"),(3,"three"),(4,"four")]
+
 
 
 
