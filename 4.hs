@@ -8,16 +8,18 @@ Hight order functions
 add1 :: Int -> Int
 add1 x = x + 1
 
-f :: (Int -> Int) -> Int
+f :: (Int -> Int) -> Int -- take a function and return int
 f x = 3
 
-g :: Int -> (Int -> Int)
+g :: Int -> (Int -> Int) -- take int and return a function
 g x = add1
 
 add1ToEach :: [Int] -> [Int]
 add1ToEach [] = []
 add1ToEach (x:xs) = add1 x : add1ToEach xs
 
+--if associates from left to right,then h has the same type as f
+--if from left to right, then h have same type as g, now this is the second one.
 --h :: int -> Int -> Int
 h :: Int -> (Int -> Int)
 h x y = x+y
@@ -60,6 +62,8 @@ map f (x:xs) = f x :map f xs
     • No instance for (Show (Int -> Int)) arising from a use of ‘print’
         (maybe you haven't applied a function to enough arguments?)
     • In a stmt of an interactive GHCi command: print it
+    
+--   h 6 is not illegal, we sill can store this value in a variable, then we have a function that we can apply to a number.
 *Main> let hmm = h 6
 *Main> hmm 2
 8
