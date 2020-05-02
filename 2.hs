@@ -20,7 +20,16 @@ increasing [] = True
 increasing [x] = True
 increasing (x:y:ys) = x <= y && increasing(y:ys)
 
-                        
+--Then,here is the same function in dafny
+ predicate sorted(l:List<int>)
+{
+    match l 
+       case Nil         => true
+       case Cons(x, xs) => 
+            match xs 
+               case Nil         => true 
+               case Cons(y, ys) => x <= y && sorted(xs)      
+               
 --text:
 
 *Main> increasing [5]
